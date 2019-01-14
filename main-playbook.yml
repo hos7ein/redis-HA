@@ -1,0 +1,5 @@
+- hosts: master-redis
+  remote_user: root
+  roles:
+  - master-redis
+  - master-sentinel

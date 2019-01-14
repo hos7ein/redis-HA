@@ -1,0 +1,50 @@
+---
+# Variables listed here are applicable to all host groups
+
+
+### Master Variables for redis
+master_redis_container_name: redis-A1
+master_redis_docker_image_name: hos7ein/redis-master
+master_redis_ip:
+master_redis_src_port: 6379
+#master_redis_dest_port: 6379
+master_redis_src_vol: /mypath
+#master_redis_dest_vol: /data
+###master_replica-announce-ip:
+###master_replica-announce-port:
+master_password: mypassword
+
+### Master Variables for redis-sentinel
+master_name: mymaster
+# Don not touch it
+quorm: 2
+master_sentinel_src_port: 26379
+
+
+
+
+
+
+
+### Slave1 Variables
+slave1_container_name: redis-A2
+slave1_docker_image_name: hos7ein/redis-slave
+slave1_src_port: 6379
+slave1_dest_port: 6379
+slave1_src_vol:
+slave1_dest_vol: /data
+slave1_replica-announce-ip:
+slave1_replica-announce-port:
+
+
+
+
+### Slave2 Variables
+slave2_container_name: redis-A3
+slave2_docker_image_name: hos7ein/redis-slave
+slave2_src_port: 6379
+slave2_dest_port: 6379
+slave2_src_vol:
+slave2_dest_vol: /data
+slave2_replica-announce-ip:
+slave2_replica-announce-port:
