@@ -291,7 +291,7 @@ dir /data
 # starting the replication synchronization process, otherwise the master will
 # refuse the replica request.
 #
-masterauth {{ master_password }}
+masterauth {{ redis_password }}
 
 # When a replica loses its connection with the master, or when the replication
 # is still in progress, the replica can act in two different ways:
@@ -505,7 +505,7 @@ replica-announce-port {{ master_redis_src_port }}
 # 150k passwords per second against a good box. This means that you should
 # use a very strong password otherwise it will be very easy to break.
 #
-requirepass {{ master_password }}
+requirepass {{ redis_password }}
 
 # Command renaming.
 #

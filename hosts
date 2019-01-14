@@ -1,2 +1,5 @@
-[master-redis]
-10.10.22.163 node_ip=10.10.22.163
+[redis-master]
+10.10.22.163 node_ip=10.10.22.163 redis_port=6379 sentinel_port=26379
+
+[redis-slaves]
+10.10.22.164 node_ip=10.10.22.164 redis_port=6379 sentinel_port=26379

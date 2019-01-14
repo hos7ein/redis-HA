@@ -57,8 +57,8 @@ logfile /date/sentinel_26379.log
 #
 # sentinel announce-ip 1.2.3.4
 
-sentinel announce-ip {{ master_redis_ip }}
-sentinel announce-port {{ master_sentinel_src_port }}
+sentinel announce-ip {{ node_ip }}
+sentinel announce-port {{ sentinel_port }}
 
 # dir <working-directory>
 # Every long running process should have a well-defined working directory.
@@ -86,7 +86,7 @@ dir /data
 # The valid charset is A-z 0-9 and the three characters ".-_".
 sentinel monitor {{ master_name }} {{ master_redis_ip }} {{ master_redis_src_port }} {{ quorm }}
 
-sentinel auth-pass {{ master_name }} {{ master_password }}
+sentinel auth-pass {{ master_name }} {{ redis_password }}
 
 # sentinel auth-pass <master-name> <password>
 #
@@ -172,7 +172,7 @@ sentinel failover-timeout {{ master_name }} 60000
 # NOTIFICATION SCRIPT
 #
 # sentinel notification-script <master-name> <script-path>
-# 
+#
 # Call the specified notification script for any sentinel event that is
 # generated in the WARNING level (for instance -sdown, -odown, and so forth).
 # This script should notify the system administrator via email, SMS, or any
@@ -196,14 +196,14 @@ sentinel failover-timeout {{ master_name }} 60000
 # When the master changed because of a failover a script can be called in
 # order to perform application-specific tasks to notify the clients that the
 # configuration has changed and the master is at a different address.
-# 
+#
 # The following arguments are passed to the script:
 #
 # <master-name> <role> <state> <from-ip> <from-port> <to-ip> <to-port>
 #
 # <state> is currently always "failover"
 # <role> is either "leader" or "observer"
-# 
+#
 # The arguments from-ip, from-port, to-ip, to-port are used to communicate
 # the old address of the master and the new address of the elected replica
 # (now a master).

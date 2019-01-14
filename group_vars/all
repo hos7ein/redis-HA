@@ -5,14 +5,11 @@
 ### Master Variables for redis
 master_redis_container_name: redis-A1
 master_redis_docker_image_name: hos7ein/redis-master
-master_redis_ip:
+master_redis_ip: 10.10.22.163
 master_redis_src_port: 6379
-#master_redis_dest_port: 6379
 master_redis_src_vol: /mypath
-#master_redis_dest_vol: /data
-###master_replica-announce-ip:
-###master_replica-announce-port:
-master_password: mypassword
+
+redis_password: mypassword
 
 ### Master Variables for redis-sentinel
 master_name: mymaster
