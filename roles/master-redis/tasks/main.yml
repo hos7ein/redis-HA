@@ -1,0 +1,18 @@
+---
+- name: Make redis master configuration
+  template:
+    src: redis.conf.j2
+    dest: "{{ redis_src_vol }}"
+  backup: yes
+
+
+- name: Deploy master redis docker container
+  docker_container:
+        name: "{{ container_name }}"
+        hostname: "{{ container_name }}"
+        image: "{{ master_redis_docker_image_name }}"
+        published_ports:
+          - "{{ master_redis_src_port }}:6379"
+        volumes:
+          - "{{ redis_src_vol }}:/data"
+        restart_policy: always

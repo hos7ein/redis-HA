@@ -1,0 +1,17 @@
+---
+- name: Make redis sentinel configuration
+  template:
+    src: redis-sentinel.conf.j2
+    dest: "{{ redis_sentinel_src_vol }}"
+  backup: yes
+
+
+
+- name: Deploy redis sentinel docker container
+  docker_container:
+        name: "sentinel-{{ container_name }}"
+        hostname: "sentinel-{{ container_name }}"
+        image: "{{ slave_redis_docker_image_name }}"
+        published_ports:
+          - "{{ sentinel_portt }}:26379"
+        restart_policy: always
