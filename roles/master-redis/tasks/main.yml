@@ -10,7 +10,7 @@
   docker_container:
         name: "{{ container_name }}"
         hostname: "{{ container_name }}"
-        image: "{{ master_redis_docker_image_name }}"
+        image: "{{ redis_docker_image_name }}"
         published_ports:
           - "{{ master_redis_src_port }}:6379"
         volumes:

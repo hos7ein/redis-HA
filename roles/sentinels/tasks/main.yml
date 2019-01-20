@@ -11,7 +11,7 @@
   docker_container:
         name: "sentinel-{{ container_name }}"
         hostname: "sentinel-{{ container_name }}"
-        image: "{{ slave_redis_docker_image_name }}"
+        image: "{{ redis_sentinel_docker_image_name }}"
         published_ports:
-          - "{{ sentinel_portt }}:26379"
+          - "{{ sentinel_port }}:26379"
         restart_policy: always
