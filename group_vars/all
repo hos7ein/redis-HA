@@ -7,13 +7,13 @@
 ###master_redis_docker_image_name: hos7ein/redis-master
 redis_docker_image_name: hos7ein/redis
 redis_sentinel_docker_image_name: hos7ein/redis-sentinel
-master_redis_ip: 10.10.22.163
+master_redis_ip: 192.168.56.31
 master_redis_src_port: 6379
 redis_password: mypassword
 master_name: mymaster
 quorm: 2
 redis_src_vol: /mypath
-redis_sentinel_src_vol: /mypath
+redis_sentinel_src_vol: /sentinel
 
 ### slave redis docker image name
 #slave_redis_docker_image_name: hos7ein/redis-slave

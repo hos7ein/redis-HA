@@ -2,8 +2,14 @@
 - name: Make redis sentinel configuration
   template:
     src: redis-sentinel.conf.j2
-    dest: "{{ redis_sentinel_src_vol }}"
-  backup: yes
+    dest: "{{ redis_sentinel_src_vol }}/sentinel.conf"
+    backup: yes
+
+
+#- name: Create log file for redis sentinel
+#  file:
+#    path: "{{ redis_sentinel_src_vol }}/sentinel_26379.log"
+#    state: touch
 
 
 
@@ -14,4 +20,6 @@
         image: "{{ redis_sentinel_docker_image_name }}"
         published_ports:
           - "{{ sentinel_port }}:26379"
+        volumes:
+          - "{{ redis_sentinel_src_vol }}:/data"
         restart_policy: always

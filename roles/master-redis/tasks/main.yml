@@ -2,8 +2,8 @@
 - name: Make redis master configuration
   template:
     src: redis.conf.j2
-    dest: "{{ redis_src_vol }}"
-  backup: yes
+    dest: "{{ redis_src_vol }}/redis.conf"
+    backup: yes
 
 
 - name: Deploy master redis docker container
