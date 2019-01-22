@@ -16,7 +16,7 @@
 - name: Deploy redis sentinel docker container
   docker_container:
         name: "sentinel-{{ container_name }}"
-        hostname: "sentinel-{{ container_name }}"
+        hostname: "{{ container_name }}-sentinel"
         image: "{{ redis_sentinel_docker_image_name }}"
         published_ports:
           - "{{ sentinel_port }}:26379"
