@@ -1,1 +1,37 @@
 ---
+- name: Remove sentinel containers
+  docker_container:
+        name: "sentinel-{{ container_name }}"
+        state: absent
+
+
+- name: Remove redis containers
+  docker_container:
+        name: "{{ container_name }}"
+        state: absent
+
+
+- name: Delete redis file glob
+  find:
+    paths: "{{ redis_src_vol }}"
+    patterns: "*.*"
+  register: files_to_delete
+
+- name: Remove redis file glob
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  with_items: "{{ files_to_delete.files }}"
+
+
+- name: Delete redis sentinel file glob
+  find:
+    paths: "{{ redis_sentinel_src_vol }}"
+    patterns: "*"
+  register: files_to_delete
+
+- name: Remove redis sentinel file glob
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  with_items: "{{ files_to_delete.files }}"

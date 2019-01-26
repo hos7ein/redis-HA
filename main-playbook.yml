@@ -8,5 +8,5 @@
 - hosts: slaves-redis
   remote_user: root
   roles:
-  - slaves-redis
   - sentinels
+  - slaves-redis
