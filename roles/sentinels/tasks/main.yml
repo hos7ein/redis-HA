@@ -6,11 +6,13 @@
     backup: yes
 
 
-#- name: Create log file for redis sentinel
-#  file:
-#    path: "{{ redis_sentinel_src_vol }}/sentinel_26379.log"
-#    state: touch
-
+- name: Configuration FirewallD
+  firewalld:
+    zone: trusted
+    interface: docker0
+    immediate: yes
+    permanent: yes
+    state: enabled
 
 
 - name: Deploy redis sentinel docker container
