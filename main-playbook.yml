@@ -1,0 +1,12 @@
+- hosts: master-redis
+  remote_user: root
+  roles:
+  - master-redis
+  - sentinels
+
+
+- hosts: slaves-redis
+  remote_user: root
+  roles:
+  - sentinels
+  - slaves-redis

@@ -1,0 +1,25 @@
+---
+- name: Make redis slave configuration
+  template:
+    src: redis.conf.j2
+    dest: "{{ redis_src_vol }}/redis.conf"
+    backup: yes
+
+- name: Configuration FirewallD
+  firewalld:
+    zone: trusted
+    interface: docker0
+    immediate: yes
+    permanent: yes
+    state: enabled
+
+- name: Deploy slave redis docker container
+  docker_container:
+        name: "{{ container_name }}"
+        hostname: "{{ container_name }}"
+        image: "{{ redis_docker_image_name }}"
+        published_ports:
+          - "{{ redis_port }}:6379"
+        volumes:
+          - "{{ redis_src_vol }}:/data"
+        restart_policy: always

@@ -1,0 +1,7 @@
+---
+#clean up everything's
+
+- hosts: all:children
+  remote_user: root
+  roles:
+  - cleanup
