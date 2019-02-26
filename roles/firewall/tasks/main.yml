@@ -1,0 +1,9 @@
+---
+# Add docker0 interface to FirewallD zone
+- name: Configuration FirewallD
+  firewalld:
+    zone: trusted
+    interface: docker0
+    immediate: yes
+    permanent: yes
+    state: enabled
