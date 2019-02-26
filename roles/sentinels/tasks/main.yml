@@ -6,15 +6,6 @@
     backup: yes
 
 
-- name: Configuration FirewallD
-  firewalld:
-    zone: trusted
-    interface: docker0
-    immediate: yes
-    permanent: yes
-    state: enabled
-
-
 - name: Deploy redis sentinel docker container
   docker_container:
         name: "sentinel-{{ container_name }}"

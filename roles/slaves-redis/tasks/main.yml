@@ -5,13 +5,6 @@
     dest: "{{ redis_src_vol }}/redis.conf"
     backup: yes
 
-- name: Configuration FirewallD
-  firewalld:
-    zone: trusted
-    interface: docker0
-    immediate: yes
-    permanent: yes
-    state: enabled
 
 - name: Deploy slave redis docker container
   docker_container:
